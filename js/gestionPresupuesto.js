@@ -1,4 +1,5 @@
-np// TODO: Crear las funciones, objetos y variables indicadas en el enunciado
+'use strict'
+// TODO: Crear las funciones, objetos y variables indicadas en el enunciado
 
 // TODO: Variable global
 
@@ -6,24 +7,27 @@ let presupuesto = 0;
 
 function actualizarPresupuesto(numero) {
     
-    if(numero < 0){
+    if(typeof numero !== "number"||numero < 0 ){
         console.log("El dato debe ser 0 o superior");
         return -1;
     }
     presupuesto = numero;
+    return presupuesto;
 }
 
 function mostrarPresupuesto() {
-    console.log(`Tu presupuesto actual es ${presupuesto}`);
+    return (`Tu presupuesto actual es de ${presupuesto} €`);
 }
 //gasto ob --> descripción string, valor int
-function CrearGasto(valor, descripcion) {
+function CrearGasto(descripcion, valor) {
+    this.descripcion = descripcion;
     
-    if(valor < 0){
+    
+    if(valor < 0 || typeof valor !== "number"){
         this.valor = 0;
     }
     this.mostrarGasto = function () {
-        console.log(`Gasto correspondiente a ${descripcion} con valor ${valpr} €`);
+        return (`Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`);
     }
     this.actualizarDescripcion = function(descripcion){
         this.descripcion = descripcion;
@@ -33,9 +37,11 @@ function CrearGasto(valor, descripcion) {
         if(valor >= 0){
             this.valor = valor;
         }
+        
+        
     }
-    let gasto1 = new CrearGasto(valor,descripcion);
-    return gasto1;
+    
+    
   
 }
 
