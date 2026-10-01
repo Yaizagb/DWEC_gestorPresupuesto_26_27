@@ -14,11 +14,29 @@ function actualizarPresupuesto(numero) {
 }
 
 function mostrarPresupuesto() {
-    // TODO
+    console.log(`Tu presupuesto actual es ${presupuesto}`);
 }
+//gasto ob --> descripción string, valor int
+function CrearGasto(valor, descripcion) {
+    
+    if(valor < 0){
+        this.valor = 0;
+    }
+    this.mostrarGasto = function () {
+        console.log(`Gasto correspondiente a ${descripcion} con valor ${valpr} €`);
+    }
+    this.actualizarDescripcion = function(descripcion){
+        this.descripcion = descripcion;
 
-function CrearGasto() {
-    // TODO
+    }
+    this.actualizarValor = function(valor){
+        if(valor >= 0){
+            this.valor = valor;
+        }
+    }
+    let gasto1 = new CrearGasto(valor,descripcion);
+    return gasto1;
+  
 }
 
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
