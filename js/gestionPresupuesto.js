@@ -26,6 +26,9 @@ function CrearGasto(descripcion, valor) {
     if(valor < 0 || typeof valor !== "number"){
         this.valor = 0;
     }
+    else{
+        this.valor = valor;
+    }
     this.mostrarGasto = function () {
         return (`Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`);
     }
