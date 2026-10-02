@@ -87,7 +87,8 @@ function calcularTotalGastos(){
     return total;
 }
 function calcularBalance(){
-
+    let gastosTotales = calcularTotalGastos();
+    return (presupuesto - gastosTotales);
 }
 
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
