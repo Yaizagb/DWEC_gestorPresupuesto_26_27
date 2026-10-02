@@ -73,7 +73,11 @@ function anyadirGasto(gasto){
 }
 function borrarGasto(id){
     
-    
+    const index = gastos.findIndex(gasto => gasto.id === id);
+
+    if(index !== -1){
+        gastos.splice(index, 1);
+    }
 }
 function calcularTotalGastos(){
     let total = 0;
