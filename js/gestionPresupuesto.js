@@ -66,9 +66,10 @@ function CrearGasto(descripcion, valor,fecha, ...etiquetas) {
         }   
     }
     this.actualizarFecha = function (nuevaFecha){
-        if(typeof nuevaFecha === "string" || !isNaN(Date.parse(nuevaFecha) || nuevaFecha !== undefined)){
-            this.fecha == nuevaFecha;
+        if(typeof nuevaFecha === "string" && !isNaN(Date.parse(nuevaFecha) && nuevaFecha !== undefined)){
+            this.fecha = Date.parse(nuevaFecha);
         }
+        fecha = Date.parse(fecha);
     }
     this.anyadirEtiquetas = function(...etiquetas){
         for(let i = 0; i < etiquetas.length ; i++){
