@@ -135,8 +135,29 @@ function calcularBalance(){
     let gastosTotales = calcularTotalGastos();
     return (presupuesto - gastosTotales);
 }
-function filtrarGastos(){
-
+function filtrarGastos(parametros){
+    return gastos.filter(gasto => {
+        if(Object.hasOwn(parametros, "fechaDesde") && gasto.fecha < Date.parse(parametros.fechaDesde)){
+                return false;
+        }
+        if(Object.hasOwn(parametros,"fechaHasta") && gasto.fecha > Date.parse(parametros.fechaHasta)){
+            return false;
+        }
+        if(Object.hasOwn(parametros,"valorMinimo") && gasto.valor < parametros.valorMinimo){
+            return false;
+        }
+        if(Object.hasOwn(parametros,"valorMaximo") && gasto.valor > parametros.valorMaximo ){
+            return false;
+        }
+        if(Object.hasOwn(parametros,"descripcionContiene") && !gasto.descripcion.toLowerCase().includes(parametros.descripcionContiene.toLowerCase())){
+            return false;
+        }
+       if (Object.hasOwn(parametros, "etiquetasTiene") &&
+            !gasto.etiquetas.some(etiqueta => parametros.etiquetasTiene.some(filtro => etiqueta.toLowerCase() === filtro.toLowerCase()))) {
+            return false;
+        }
+        return true;
+    });
 }
 function agruparGastos(){
 
