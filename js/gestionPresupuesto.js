@@ -135,31 +135,53 @@ function calcularBalance(){
     let gastosTotales = calcularTotalGastos();
     return (presupuesto - gastosTotales);
 }
-function filtrarGastos(parametros){
+function filtrarGastos(parametros = {}){
     return gastos.filter(gasto => {
-        if(Object.hasOwn(parametros, "fechaDesde") && gasto.fecha < Date.parse(parametros.fechaDesde)){
-                return false;
-        }
-        if(Object.hasOwn(parametros,"fechaHasta") && gasto.fecha > Date.parse(parametros.fechaHasta)){
+        if(parametros.fechaDesde !== undefined && gasto.fecha < Date.parse(parametros.fechaDesde)){
             return false;
         }
-        if(Object.hasOwn(parametros,"valorMinimo") && gasto.valor < parametros.valorMinimo){
+        if(parametros.fechaHasta !== undefined && gasto.fecha > Date.parse(parametros.fechaHasta)){
             return false;
         }
-        if(Object.hasOwn(parametros,"valorMaximo") && gasto.valor > parametros.valorMaximo ){
+        if(parametros.valorMinimo !== undefined && gasto.valor < parametros.valorMinimo){
             return false;
         }
-        if(Object.hasOwn(parametros,"descripcionContiene") && !gasto.descripcion.toLowerCase().includes(parametros.descripcionContiene.toLowerCase())){
+        if(parametros.valorMaximo !== undefined && gasto.valor > parametros.valorMaximo){
             return false;
         }
-       if (Object.hasOwn(parametros, "etiquetasTiene") &&
-            !gasto.etiquetas.some(etiqueta => parametros.etiquetasTiene.some(filtro => etiqueta.toLowerCase() === filtro.toLowerCase()))) {
+        if(parametros.descripcionContiene !== undefined &&
+           !gasto.descripcion.toLowerCase().includes(parametros.descripcionContiene.toLowerCase())){
+            return false;
+        }
+        if(parametros.etiquetasTiene !== undefined && parametros.etiquetasTiene.length > 0 &&
+           !gasto.etiquetas.some(etiqueta =>
+               parametros.etiquetasTiene.some(filtro => etiqueta.toLowerCase() === filtro.toLowerCase()))){
             return false;
         }
         return true;
     });
 }
-function agruparGastos(){
+function agruparGastos(periodo = "mes", etiquetas = [],fechaDesde,fechaHasta){
+    
+    if(fechaHasta === undefined){
+        fechaHasta = new Date().toISOString().slice(0,10);
+    }
+    let gastosFiltrados = filtrarGastos({
+        fechaDesde: fechaDesde,
+        fechaHasta: fechaHasta,
+        etiquetasTiene: etiquetas
+    });
+
+    let gastosReduced = gastosFiltrados.reduce(function(acc,gasto){
+        let periodoAgrupacion = gasto.obtenerPeriodoAgrupacion(periodo);
+        if(acc[periodoAgrupacion] === undefined){
+            acc[periodoAgrupacion] = 0;
+        }
+        acc[periodoAgrupacion] += gasto.valor;
+        return acc;
+
+    },{});
+    return gastosReduced;
 
 }
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
