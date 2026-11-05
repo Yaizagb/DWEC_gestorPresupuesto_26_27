@@ -8,12 +8,17 @@ import * as gestionPresupuestoWeb from './gestionPresupuestoWeb.js';
 gestionPresupuesto.actualizarPresupuesto(1500);
 gestionPresupuestoWeb.mostrarDatoEnId('presupuesto',gestionPresupuesto.mostrarPresupuesto());
 
-let g1 = gestionPresupuesto.CrearGasto("Compra carne", 23.44, "2021-10-06", "casa", "comida");
-let g2 = gestionPresupuesto.CrearGasto("Compra fruta y verdura", 14.25, "2021-09-06", "supermercado", "comida");
-let g3 = gestionPresupuesto.CrearGasto("Bonobús", 18.60, "2020-05-26", "transporte");
-let g4 = gestionPresupuesto.CrearGasto("Gasolina", 60.42, "2021-10-08", "transporte", "gasolina");
-let g5 = gestionPresupuesto.CrearGasto("Seguro hogar", 206.45, "2021-09-26", "casa", "seguros");
-let g6 = gestionPresupuesto.CrearGasto("Seguro coche", 195.78, "2021-10-06", "transporte", "seguros");
+let g1 = new gestionPresupuesto.CrearGasto("Compra carne", 23.44, "2021-10-06", "casa", "comida");
+
+let g2 = new gestionPresupuesto.CrearGasto("Compra fruta y verdura", 14.25, "2021-09-06", "supermercado", "comida");
+
+let g3 = new gestionPresupuesto.CrearGasto("Bonobús", 18.60, "2020-05-26", "transporte");
+
+let g4 = new gestionPresupuesto.CrearGasto("Gasolina", 60.42, "2021-10-08", "transporte", "gasolina");
+
+let g5 = new gestionPresupuesto.CrearGasto("Seguro hogar", 206.45, "2021-09-26", "casa", "seguros");
+
+let g6 = new gestionPresupuesto.CrearGasto("Seguro coche", 195.78, "2021-10-06", "transporte", "seguros");
 gestionPresupuesto.anyadirGasto(g1);
 gestionPresupuesto.anyadirGasto(g2);
 gestionPresupuesto.anyadirGasto(g3);
@@ -25,5 +30,8 @@ let gastosTot = gestionPresupuesto.calcularTotalGastos();
 gestionPresupuestoWeb.mostrarDatoEnId('gastos-totales',gastosTot);
 let balance = gestionPresupuesto.calcularBalance();
 gestionPresupuestoWeb.mostrarDatoEnId('balance-total',balance);
-let listadoGastos = gestionPresupuesto.filtrarGastos();
+let listadoGastos = gestionPresupuesto.listarGastos();
+for(gasto in listadoGastos){
+
 gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-completo',listadoGastos,);
+}
