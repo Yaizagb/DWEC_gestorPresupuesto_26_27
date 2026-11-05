@@ -31,7 +31,7 @@ gestionPresupuestoWeb.mostrarDatoEnId('gastos-totales',gastosTot);
 let balance = gestionPresupuesto.calcularBalance();
 gestionPresupuestoWeb.mostrarDatoEnId('balance-total',balance);
 let listadoGastos = gestionPresupuesto.listarGastos();
-for(gasto in listadoGastos){
+for(let gasto of listadoGastos){
 
-gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-completo',listadoGastos,);
+gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-completo',gasto);
 }
