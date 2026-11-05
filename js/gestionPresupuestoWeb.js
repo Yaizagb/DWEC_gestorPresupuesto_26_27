@@ -9,11 +9,16 @@ function mostrarDatoEnId(idElemento, valor){
     if(elemento){
         elemento.textContent = valor;
     }
-    console.warn(`no se encontró ningún elemento con el id: ${idElemento}`);
+    else
+        console.warn(`no se encontró ningún elemento con el id: ${idElemento}`);
 }
 
 function mostrarGastoWeb(idElemento,gasto){
     const elemento = document.getElementById(idElemento);
+    gasto.etiqueta.forEach(etiqueta => {
+        //por cada etiqueta hay que crear un span con la clase gasto-etiquetas-etiqueta
+    });
+    
 }
 function mostrarGastosAgrupadosWeb(){
 

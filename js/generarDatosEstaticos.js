@@ -3,3 +3,6 @@
 //importar info ficheros
 import * as gestionPresupuesto from './js/gestionPresupuesto.js';
 import * as gestionPresupuestoWeb from './js/gestionPresupuestoWeb.js';
+
+
+gestionPresupuesto.actualizarPresupuesto(1500);
