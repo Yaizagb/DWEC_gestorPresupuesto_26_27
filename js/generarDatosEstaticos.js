@@ -35,3 +35,16 @@ for(let gasto of listadoGastos){
 
 gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-completo',gasto);
 }
+let gastosFiltrados = gestionPresupuesto.filtrarGastos({
+    fechaDesde: "2021-09-01",
+    fechaHasta: "2021-09-30"
+});
+for(let gasto of gastosFiltrados){
+    gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-filtrado-1',gasto)
+}
+let gastosFiltrados2 = gestionPresupuesto.filtrarGastos({
+   valorMinimo: 50
+});
+for(let gasto of gastosFiltrados2){
+    gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-filtrado-2',gasto)
+}
