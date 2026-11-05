@@ -62,3 +62,12 @@ let gastosFiltrados4 = gestionPresupuesto.filtrarGastos({
 for(let gasto of gastosFiltrados4){
     gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-filtrado-4',gasto)
 }
+let gastoAgrup = gestionPresupuesto.agruparGastos("día");
+    gestionPresupuestoWeb.mostrarGastosAgrupadosWeb('agrupacion-dia',gastoAgrup,"dia");
+
+let gastoAgrup2 = gestionPresupuesto.agruparGastos("mes");
+    gestionPresupuestoWeb.mostrarGastosAgrupadosWeb('agrupacion-mes',gastoAgrup2,"mes");
+
+let gastoAgrup3 = gestionPresupuesto.agruparGastos("año");
+    gestionPresupuestoWeb.mostrarGastosAgrupadosWeb('agrupacion-anyo',gastoAgrup3,"anyo");
+
