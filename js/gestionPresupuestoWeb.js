@@ -74,7 +74,7 @@ function mostrarGastosAgrupadosWeb(idElemento,agrup, periodo){
         divAgrDato.append(spanClave,spanDato);
         divAgrupacion.appendChild(divAgrDato);
         
-    });
+    };
     elemento.append(divAgrupacion);
 }
 
