@@ -5,12 +5,9 @@
 //npx cypress open testeo de manera gráfica
 
 function mostrarDatoEnId(idElemento, valor){
-    const elemento = document.getElementById(idElemento);
-    if(elemento){
-        elemento.textContent = valor;
-    }
-    else
-        console.warn(`no se encontró ningún elemento con el id: ${idElemento}`);
+    let elemento = document.getElementById(idElemento);
+    elemento.textContent = valor;
+
 }
 
 function mostrarGastoWeb(idElemento,gasto){
@@ -29,26 +26,15 @@ function mostrarGastoWeb(idElemento,gasto){
     divFecha.textContent = gasto.fecha;
     divValor.textContent = gasto.valor;
     
-    gasto.etiqueta.forEach(etiqueta => {
+    gasto.etiquetas.forEach(etiqueta => {
         let etiq = document.createElement("span");
         etiq.className = "gasto-etiquetas-etiqueta"
         etiq.textContent = etiqueta;
         divEtiqueta.appendChild(etiq);
     });
     elemento.append(divGasto);
-    divGasto.append(divDesc);
-    divDesc.append(divFecha);
-    divFecha.append(divValor);
-    divValor.append(divEtiqueta);
- // append puede añadir varios elementos de una sola vez
- /*
- divGasto.append(
-    divDescripcion,
-    divFecha,
-    divValor,
-    divEtiquetas
-);
-  */
+    divGasto.append(divDesc, divFecha, divValor, divEtiqueta);
+ 
     
 }
 function mostrarGastosAgrupadosWeb(idElemento,agrup, periodo){
