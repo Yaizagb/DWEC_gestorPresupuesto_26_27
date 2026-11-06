@@ -56,18 +56,18 @@ for(let gasto of gastosFiltrados3){
     gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-filtrado-3',gasto)
 }
 let gastosFiltrados4 = gestionPresupuesto.filtrarGastos({
-   valorMinimo: 50,
+   valorMaximo: 50,
    etiquetasTiene:["comida", "transporte"]
 });
 for(let gasto of gastosFiltrados4){
     gestionPresupuestoWeb.mostrarGastoWeb('listado-gastos-filtrado-4',gasto)
 }
-let gastoAgrup = gestionPresupuesto.agruparGastos("día");
-    gestionPresupuestoWeb.mostrarGastosAgrupadosWeb('agrupacion-dia',gastoAgrup,"dia");
+let gastoAgrup = gestionPresupuesto.agruparGastos("dia");
+    gestionPresupuestoWeb.mostrarGastosAgrupadosWeb('agrupacion-dia',gastoAgrup,"día");
 
 let gastoAgrup2 = gestionPresupuesto.agruparGastos("mes");
     gestionPresupuestoWeb.mostrarGastosAgrupadosWeb('agrupacion-mes',gastoAgrup2,"mes");
 
-let gastoAgrup3 = gestionPresupuesto.agruparGastos("año");
-    gestionPresupuestoWeb.mostrarGastosAgrupadosWeb('agrupacion-anyo',gastoAgrup3,"anyo");
+let gastoAgrup3 = gestionPresupuesto.agruparGastos("anyo");
+    gestionPresupuestoWeb.mostrarGastosAgrupadosWeb('agrupacion-anyo',gastoAgrup3,"año");
 
