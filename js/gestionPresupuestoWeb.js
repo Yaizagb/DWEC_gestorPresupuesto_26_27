@@ -3,6 +3,7 @@
 //colocar export
 //npm run test 4
 //npx cypress open testeo de manera gráfica
+import * as gestionPresupuesto from './gestionPresupuesto.js';
 
 function mostrarDatoEnId(idElemento, valor){
     let elemento = document.getElementById(idElemento);
