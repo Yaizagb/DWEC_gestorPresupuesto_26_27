@@ -81,9 +81,22 @@ function repintar(){
 
 }
 
+// si le pones paréntesis le indica que ejecute inmediatamente la función
+     const botonActPre = document.getElementById("actualizarpresupuesto");
+     botonActPre.addEventListener("click", actualizarPresupuestoWeb);
+
+function actualizarPresupuestoWeb(){
+    let presupuestoUsu = prompt("Introduce tu presupuesto");
+    const presupuesto = Number(presupuestoUsu);
+     gestionPresupuesto.actualizarPresupuesto(presupuesto);
+     repintar();
+
+}
+
 export{
     mostrarDatoEnId,
     mostrarGastoWeb,
     mostrarGastosAgrupadosWeb,
-    repintar
+    repintar,
+    actualizarPresupuestoWeb
 }
