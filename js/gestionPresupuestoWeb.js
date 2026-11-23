@@ -33,8 +33,17 @@ function mostrarGastoWeb(idElemento,gasto){
         etiq.textContent = etiqueta;
         divEtiqueta.appendChild(etiq);
     });
+   //bton
+   let btnEdit = document.createElement("button");
+   btnEdit.textContent = "Editar";
+   btnEdit.className = "gasto-editar";
+
+   let handler = new EditarHandle();
+   handler.gasto = gasto;
+
+   btnEdit.addEventListener("click", handler);
     elemento.append(divGasto);
-    divGasto.append(divDesc, divFecha, divValor, divEtiqueta);
+    divGasto.append(divDesc, divFecha, divValor, divEtiqueta, btnEdit);
  
     
 }
@@ -103,6 +112,23 @@ function nuevoGastoWeb(){
     let gasto = new gestionPresupuesto.CrearGasto(desc,valor,fecha, ...etiquetas);
     gestionPresupuesto.anyadirGasto(gasto);
     repintar();
+
+}
+function EditarHandle(){
+
+    this.handleEvent = function(){
+        let desc = prompt("Nueva descripción", this.gasto.descripcion);
+        let valor = Number(prompt("Nuevo valor", this.gasto.valor));
+        let fecha = prompt("Nueva fecha",new Date(this.gasto.fecha).toISOString().slice(0, 10));
+        let etiquetas = prompt("Nuevas etiquetas separadas por comas",this.gasto.etiquetas.join(","));
+        this.gasto.actualizarDescripcion(desc);
+        this.gasto.actualizarValor(valor);
+        this.gasto.actualizarFecha(fecha);
+
+        this.gasto.anyadirEtiquetas(...etiquetas.split(","));
+
+        repintar();
+    };
 
 }
 export{
