@@ -31,7 +31,12 @@ function mostrarGastoWeb(idElemento,gasto){
         let etiq = document.createElement("span");
         etiq.className = "gasto-etiquetas-etiqueta"
         etiq.textContent = etiqueta;
+         let etiqHand = new BorrarEtiquetasHandle();
+         etiqHand.gasto = gasto;
+         etiqHand.etiqueta = etiqueta;
+         etiq.addEventListener("click",etiqHand);
         divEtiqueta.appendChild(etiq);
+
     });
    //bton
    let btnEdit = document.createElement("button");
@@ -143,6 +148,12 @@ function BorrarHandle(){
     this.handleEvent = function (){
         let id = this.gasto.id;
         gestionPresupuesto.borrarGasto(id);
+        repintar();
+    }
+}
+function BorrarEtiquetasHandle(){
+    this.handleEvent = function(){
+        this.gasto.borrarEtiquetas(this.etiqueta);
         repintar();
     }
 }
