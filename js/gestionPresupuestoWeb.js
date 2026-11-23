@@ -38,12 +38,20 @@ function mostrarGastoWeb(idElemento,gasto){
    btnEdit.textContent = "Editar";
    btnEdit.className = "gasto-editar";
 
+   let btnBorrar = document.createElement("button");
+   btnBorrar.textContent = "Borrar";
+   btnBorrar.className = "gasto-borrar";
+
    let handler = new EditarHandle();
    handler.gasto = gasto;
 
+   let handBorr = new BorrarHandle();
+   handBorr.gasto = gasto;
+
    btnEdit.addEventListener("click", handler);
+   btnBorrar.addEventListener("click", handBorr);
     elemento.append(divGasto);
-    divGasto.append(divDesc, divFecha, divValor, divEtiqueta, btnEdit);
+    divGasto.append(divDesc, divFecha, divValor, divEtiqueta, btnEdit,btnBorrar);
  
     
 }
@@ -130,6 +138,13 @@ function EditarHandle(){
         repintar();
     };
 
+}
+function BorrarHandle(){
+    this.handleEvent = function (){
+        let id = this.gasto.id;
+        gestionPresupuesto.borrarGasto(id);
+        repintar();
+    }
 }
 export{
     mostrarDatoEnId,
