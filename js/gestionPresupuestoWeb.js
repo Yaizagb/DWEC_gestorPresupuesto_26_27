@@ -92,7 +92,19 @@ function actualizarPresupuestoWeb(){
      repintar();
 
 }
+    const botonNuevoGastWeb = document.getElementById("anyadirgasto");
+    botonNuevoGastWeb.addEventListener("click", nuevoGastoWeb)
+function nuevoGastoWeb(){
+    let desc = prompt("Dame la descripción del gasto nuevo a introducir")
+    let valor = Number(prompt("Dame el valor del gasto"));
+    let fecha =prompt("Dame la fecha en la que se realizó el gasto");
+    let etiquetas = prompt("Indicame las etiquetas del gasto separadas por una ,").split(",");
 
+    let gasto = new gestionPresupuesto.CrearGasto(desc,valor,fecha, ...etiquetas);
+    gestionPresupuesto.anyadirGasto(gasto);
+    repintar();
+
+}
 export{
     mostrarDatoEnId,
     mostrarGastoWeb,
